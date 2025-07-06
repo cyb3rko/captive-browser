@@ -1,0 +1,8 @@
+.idea
+vendor/**/*.md
+vendor/**/*.markdown
+vendor/**/modules.txt
+vendor/**/AUTHORS
+vendor/**/CONTRIBUTORS
+vendor/**/MAINTAINERS
+vendor/**/*travis.yml
