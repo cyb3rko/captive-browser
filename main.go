@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"io/ioutil"
+	"errors"
 	"log"
 	"net"
 	"os"
@@ -65,7 +65,7 @@ func main() {
 		configPath = filepath.Join(usr.HomeDir, ".config")
 	}
 	configPath = filepath.Join(configPath, "captive-browser.toml")
-	tomlData, err := ioutil.ReadFile(configPath)
+	tomlData, err := os.ReadFile(configPath)
 	if err != nil {
 		log.Fatalln("Failed to read config:", err)
 	}
@@ -77,7 +77,8 @@ func main() {
 	log.Printf("Obtaining DHCP DNS server...")
 	out, err := exec.Command("/bin/sh", "-c", conf.DHCP).Output()
 	if err != nil {
-		if err, ok := err.(*exec.ExitError); ok {
+		var err *exec.ExitError
+		if errors.As(err, &err) {
 			os.Stderr.Write(err.Stderr)
 		}
 		log.Fatalln("Failed to execute dhcp-dns:", err)
