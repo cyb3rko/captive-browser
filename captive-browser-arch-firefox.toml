@@ -1,7 +1,7 @@
 # browser is the shell (/bin/sh) command executed once the proxy starts.
 # When browser exits, the proxy exits. An extra env var PROXY is available.
 #
-# Here, we use a separate Chrome instance in Incognito mode, so that
+# Here, we use a separate Firefox instance in private mode, so that
 # it can run (and be waited for) alongside the default one, and that
 # it maintains no state across runs. To configure this browser open a
 # normal window in it, settings will be preserved.
